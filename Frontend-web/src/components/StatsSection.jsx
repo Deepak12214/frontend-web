@@ -11,7 +11,7 @@ const StatsSection = ({
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
             <div className="absolute inset-0 bg-linear-to-t from-gray-900 to-transparent pointer-events-none"></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10 text-center">
                 <div className="mb-10">
                     <span className="text-(--color-primary) font-bold tracking-wider uppercase text-xs animate-pulse">Global Scale</span>
                     <h2 className="text-2xl md:text-4xl font-extrabold mt-3 mb-3 leading-tight">{title}</h2>

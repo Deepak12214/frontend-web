@@ -38,7 +38,7 @@ const CourseCategory = () => {
 
             {/* Hero Section */}
             <div className="bg-gradient-to-br from-orange-50 via-white to-green-50 border-b border-gray-100">
-                <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div className=" mx-auto px-4 sm:px-8 lg:px-12 py-16">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         {/* Left: Category Info */}
                         <div>
@@ -116,7 +116,7 @@ const CourseCategory = () => {
 
             {/* University Partners Section */}
             <div className="bg-white border-y border-gray-100 py-8 overflow-hidden">
-                <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+                <div className=" mx-auto px-4 sm:px-8 lg:px-12">
                     <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by Top Universities</p>
                     <div className="flex justify-center gap-12 opacity-60 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
                         {category.universityPartners?.map((partner, index) => (
@@ -133,7 +133,7 @@ const CourseCategory = () => {
             </div>
 
             {/* Course Listing Section */}
-            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-10">
                 {/* Section Header with Filters and Search */}
                 <div className="flex flex-col md:flex-row gap-6 items-center justify-between mb-10">
                     <h2 className="text-3xl font-bold text-gray-900">
@@ -204,7 +204,7 @@ const CourseCategory = () => {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/10 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none"></div>
 
-                <div className=" mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className=" mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         {/* Left: Description */}
                         <div>
@@ -270,7 +270,7 @@ const CourseCategory = () => {
 
             {/* Blogs Section - Refined */}
             <div className="bg-white py-12">
-                <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+                <div className=" mx-auto px-4 sm:px-8 lg:px-12">
                     <h2 className="text-3xl font-bold text-gray-900 mb-10 flex items-center gap-4">
                         <span className="w-2 h-8 bg-orange-500 rounded-full"></span>
                         Latest from the Blog

@@ -61,7 +61,7 @@ const CartPage = () => {
             <Header categories={categories} navLinks={navLinks} />
 
             <main className="flex-1 py-8">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
 
                     {/* Page Title & Clear Cart */}
                     <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-4">

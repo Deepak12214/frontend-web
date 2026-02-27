@@ -61,14 +61,14 @@ const PrivacyPolicy = () => {
             <main className="pb-20">
                 {/* Breadcrumb */}
                 <div className="bg-white border-b border-gray-200">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-4">
                         <Breadcrumb items={breadcrumbItems} simple={true} />
                     </div>
                 </div>
 
                 {/* Hero / Header */}
                 <section className="bg-white py-8 text-center">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
                         <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
                             Privacy <span className="text-(--color-primary)">Policy</span>
                         </h1>
@@ -82,7 +82,7 @@ const PrivacyPolicy = () => {
                 </section>
 
                 {/* Content Sections */}
-                <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+                <section className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 py-8 space-y-6">
                     {sections.map((section, index) => (
                         <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <div className="flex items-start gap-3">

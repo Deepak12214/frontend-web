@@ -20,7 +20,7 @@ import CartPage from './pages/Cart';
 
 const App = () => {
     return (
-        <Router>
+        <Router basename="/react">
             <ScrollToTop />
             <div className="min-h-screen">
                 <Routes>

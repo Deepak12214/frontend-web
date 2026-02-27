@@ -56,7 +56,7 @@ const Breadcrumb = ({ items, simple = false }) => {
 
     return (
         <div className="bg-transparent">
-            <div className="max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pt-3">
                 {navContent}
             </div>
         </div>

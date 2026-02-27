@@ -27,7 +27,7 @@ const FacultySection = ({
             <div className="absolute top-0 right-0 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-200/20 rounded-full blur-3xl -ml-32 -mb-32"></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div className="text-left">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">

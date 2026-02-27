@@ -9,7 +9,12 @@ import { mockBlogs } from "../Blog/mockData";
 
 export default function BlogDetails() {
     const { slug } = useParams();
-    const blog = mockBlogs.find(b => b.slug === slug);
+    const currentIndex = mockBlogs.findIndex(b => b.slug === slug);
+    const blog = mockBlogs[currentIndex];
+
+    const prevBlog = currentIndex > 0 ? mockBlogs[currentIndex - 1] : null;
+    const nextBlog = currentIndex < mockBlogs.length - 1 ? mockBlogs[currentIndex + 1] : null;
+
     const [scrollProgress, setScrollProgress] = useState(0);
     const [activeHeaderCategory, setActiveHeaderCategory] = useState("individuals");
 
@@ -70,7 +75,7 @@ export default function BlogDetails() {
             <main className="flex-1 pt-0 pb-6">
                 {/* Hero Section */}
                 <div className="relative w-full lg:pb-0 bg-linear-to-b from-orange-50/50 via-white to-white">
-                    <div className="max-w-7xl mx-auto px-4 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         {/* Breadcrumb */}
                         <nav className="flex items-center gap-1 lg:gap-2 text-xs lg:text-sm text-gray-500 mb-2 overflow-x-auto whitespace-nowrap">
                             <Link to="/" className="hover:text-(--color-primary) transition-colors">Home</Link>
@@ -122,7 +127,7 @@ export default function BlogDetails() {
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 lg:px-8 mt-4">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 mt-4">
                     <div className="flex flex-col lg:flex-row lg:gap-12 items-start">
                         <div className="w-full lg:flex-1">
                             {blog.featuredImage?.url && (
@@ -181,6 +186,31 @@ export default function BlogDetails() {
                                             />
                                         </div>
                                     )}
+
+                                    {/* Prev / Next Blog Navigation */}
+                                    <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 pt-8">
+                                        {prevBlog ? (
+                                            <Link to={`/blog/${prevBlog.slug}`} className="group flex flex-col gap-1 w-full sm:w-1/2 items-start text-left p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                                                <span className="text-gray-400 text-xs font-bold uppercase tracking-widest flex items-center gap-1 group-hover:text-(--color-primary) transition-colors">
+                                                    ← Previous
+                                                </span>
+                                                <span className="font-bold text-gray-900 group-hover:text-(--color-primary) transition-colors line-clamp-2">
+                                                    {prevBlog.title}
+                                                </span>
+                                            </Link>
+                                        ) : <div className="w-full sm:w-1/2"></div>}
+
+                                        {nextBlog ? (
+                                            <Link to={`/blog/${nextBlog.slug}`} className="group flex flex-col gap-1 w-full sm:w-1/2 items-end text-right p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                                                <span className="text-gray-400 text-xs font-bold uppercase tracking-widest flex items-center gap-1 group-hover:text-(--color-primary) transition-colors">
+                                                    Next →
+                                                </span>
+                                                <span className="font-bold text-gray-900 group-hover:text-(--color-primary) transition-colors line-clamp-2">
+                                                    {nextBlog.title}
+                                                </span>
+                                            </Link>
+                                        ) : <div className="w-full sm:w-1/2"></div>}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -197,9 +227,9 @@ export default function BlogDetails() {
                             <div className="bg-orange-50 rounded-2xl p-6 border border-orange-100 text-center flex flex-col items-center">
                                 <h3 className="font-bold text-xl mb-2 text-gray-900">Need Help?</h3>
                                 <p className="text-sm text-gray-600 mb-5">Talk to our experts for career guidance.</p>
-                                <button className="px-6 py-2.5 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800 transition-all text-sm">
+                                <Link to="/contact" className="px-6 py-2.5 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800 transition-all text-sm w-full block">
                                     Contact Us
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

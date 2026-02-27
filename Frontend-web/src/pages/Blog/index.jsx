@@ -10,14 +10,23 @@ import { mockBlogs, mockCategories } from './mockData';
 const Blogs = () => {
     const [activeHeaderCategory, setActiveHeaderCategory] = useState('individuals');
     const [activeCategory, setActiveCategory] = useState('All');
+    const [searchQuery, setSearchQuery] = useState('');
 
     // Use mock data for now
     const categories = mockCategories;
     const allBlogs = mockBlogs;
 
-    const filteredBlogs = activeCategory === 'All'
-        ? allBlogs
-        : allBlogs.filter(blog => blog.category?.name === activeCategory);
+    const filteredBlogs = allBlogs
+        .filter(blog => activeCategory === 'All' || blog.category?.name === activeCategory)
+        .filter(blog => {
+            const q = searchQuery.toLowerCase();
+            return (
+                blog.title?.toLowerCase().includes(q) ||
+                blog.excerpt?.toLowerCase().includes(q) ||
+                blog.category?.name?.toLowerCase().includes(q) ||
+                (blog.author?.name || 'admin').toLowerCase().includes(q)
+            );
+        });
 
     const recentBlog = allBlogs.find(b => b.isFeatured) || allBlogs[0];
 
@@ -42,15 +51,15 @@ const Blogs = () => {
                 navLinks={navLinks}
             />
 
-            <main className="flex-1 font-montserrat pt-2 mb-10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <main className="flex-1 font-montserrat pt-2 mb-10 overflow-hidden w-full">
+                <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
 
                     {/* HERO SECTION - Full Width Card */}
                     {recentBlog && (
-                        <div className="relative w-full h-[400px] md:h-[500px] rounded-4xl overflow-hidden group shadow-2xl shadow-gray-200">
+                        <div className="relative w-full h-[260px] md:h-[340px] rounded-3xl overflow-hidden group shadow-xl shadow-gray-200">
                             {/* Background Image */}
                             <img
-                                src={recentBlog.featuredImage?.url || '/placeholder-blog.jpg'}
+                                src={recentBlog.featuredImage?.url || `${import.meta.env.BASE_URL}placeholder-blog.jpg`}
                                 alt={recentBlog.title}
                                 className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                             />
@@ -60,13 +69,13 @@ const Blogs = () => {
 
                             {/* View Icon Top Right */}
                             <Link to={`/blog/${recentBlog.slug}`}>
-                                <div className="absolute top-8 right-8 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-(--color-primary) hover:border-(--color-primary) transition-all cursor-pointer">
-                                    <ArrowUpRight className="h-6 w-6" />
+                                <div className="absolute top-6 right-6 p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-(--color-primary) hover:border-(--color-primary) transition-all cursor-pointer">
+                                    <ArrowUpRight className="h-5 w-5" />
                                 </div>
                             </Link>
 
                             {/* Content Bottom */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+                            <div className="absolute bottom-0 left-0 w-full p-5 md:p-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
                                 <div className="max-w-3xl space-y-4">
                                     {/* Title */}
                                     <h1 className="text-3xl md:text-5xl font-bold text-white font-avalors leading-tight">
@@ -112,8 +121,8 @@ const Blogs = () => {
                     )}
 
                     {/* FILTERS & SEARCH */}
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6 mt-4 ">
-                        {/* Categories Tabs */}
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8 mt-6">
+                        {/* Categories Tabs on Left */}
                         <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
                             <div className="flex items-center gap-8 border-b border-gray-100 min-w-max px-2">
                                 {categories.map((cat, idx) => {
@@ -135,6 +144,18 @@ const Blogs = () => {
                                     );
                                 })}
                             </div>
+                        </div>
+
+                        {/* Search Input on Right */}
+                        <div className="w-full md:w-1/3 relative">
+                            <input
+                                type="text"
+                                placeholder="Search by topic, author, etc..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 focus:border-(--color-primary) bg-gray-50/50"
+                            />
+                            <svg className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
                     </div>
 

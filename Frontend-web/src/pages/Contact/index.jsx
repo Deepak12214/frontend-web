@@ -36,14 +36,14 @@ const Contact = () => {
             <main className="pb-20">
                 {/* Breadcrumb Section */}
                 <div className="bg-white border-b border-gray-200">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-4">
                         <Breadcrumb items={breadcrumbItems} simple={true} />
                     </div>
                 </div>
 
                 {/* Hero / Contact Us Main Section */}
                 <section className="bg-white py-8 lg:py-12">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             {/* Left Content */}
                             <div className="space-y-6 animate-slideDown">
@@ -76,12 +76,12 @@ const Contact = () => {
                 {/* Get in Touch Section */}
                 <section className="py-12 relative overflow-hidden">
                     {/* Background decoration */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1440px] pointer-events-none">
                         <div className="absolute top-20 left-10 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
                         <div className="absolute top-20 right-10 w-64 h-64 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
                     </div>
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
                         <div className="text-center mb-10 space-y-3">
                             <span className="text-(--color-primary) font-bold tracking-wider uppercase text-xs">Reach Out</span>
                             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Get in Touch</h2>
@@ -131,7 +131,7 @@ const Contact = () => {
                 {/* We've Got Your Back Section */}
                 <section className="bg-gray-900 py-12 text-white relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10 text-center">
                         <h2 className="text-2xl md:text-3xl font-bold mb-3">We've Got Your Back</h2>
                         <p className="text-gray-400 mb-8 text-base">From enrollment to completion, we are with you at every step of your journey.</p>
 
@@ -161,7 +161,7 @@ const Contact = () => {
 
                 {/* Where We Work From Section */}
                 <section className="py-12 bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <div className="text-center mb-10">
                             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Where We Work From</h2>
                             <p className="text-gray-500 text-sm">Our offices across the country</p>
@@ -204,7 +204,7 @@ const Contact = () => {
 
                 {/* Disclaimer / Important Note Section */}
                 <section className="bg-gray-50 border-t border-gray-200 py-8">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
                         <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 mb-4">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>

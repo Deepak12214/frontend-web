@@ -23,7 +23,7 @@ const CareersSection = ({
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-green-50/40 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
             </div>
 
-            <div className="relative z-10 max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                 {/* Header */}
                 <div className="text-center mb-4">
                     <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">

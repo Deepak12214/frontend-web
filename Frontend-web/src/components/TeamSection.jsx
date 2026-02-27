@@ -12,7 +12,7 @@ const TeamSection = ({
             <div className="absolute top-0 right-0 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-200/20 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none"></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
                 <div className="text-center mb-10">
                     <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">
                         {title}

@@ -15,7 +15,7 @@ const CoursesSection = ({
 
     return (
         <section className="bg-white py-4">
-            <div className="max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                 <div className="text-center mb-4">
                     <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">
                         {firstPart} <span className="text-[color:var(--color-primary)]">{lastWord}</span>

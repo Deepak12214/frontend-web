@@ -68,7 +68,7 @@ const TestimonialsPage = () => {
                         <div className="absolute top-[50%] right-[3%] w-28 h-36 bg-gray-300 rounded-lg transform rotate-2 blur-[1px]"></div>
                     </div>
 
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center relative z-10 flex flex-col items-center">
                         {/* Pill text */}
                         <div className="inline-flex items-center justify-center px-4 py-1.5 mb-5 text-sm font-semibold text-(--color-primary-dark) bg-orange-100 rounded-full border border-orange-200">
                             Testimonials
@@ -97,7 +97,7 @@ const TestimonialsPage = () => {
                 <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent"></div>
 
                 <section className="py-10 bg-slate-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <div className="mb-6 text-center">
                             <h2 className="text-3xl font-bold text-gray-900 relative inline-flex flex-col items-center">
                                 inspiring stories
@@ -181,7 +181,7 @@ const TestimonialsPage = () => {
 
                 {/* WHAT OUR LEARNERS ARE SAYING (3-column layout) */}
                 <section className="py-10 bg-white border-t border-gray-100">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 text-center flex flex-col items-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                             What our learners<br />Are Saying
                         </h2>

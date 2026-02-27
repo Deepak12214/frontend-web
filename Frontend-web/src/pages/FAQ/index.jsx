@@ -178,14 +178,14 @@ const FAQ = () => {
             <main className="grow pb-20">
                 {/* Breadcrumb Section */}
                 <div className="bg-white border-b border-gray-200">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-4">
                         <Breadcrumb items={breadcrumbItems} simple={true} />
                     </div>
                 </div>
 
                 {/* Hero / Title Section */}
                 <section className="bg-white pt-8 pb-6 text-center">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-6 relative inline-block">
                             Frequently Asked Questions
                             <span className="absolute bottom-[-10px] left-1/4 right-1/4 h-1 bg-(--color-primary) rounded-full opacity-80"></span>
@@ -198,7 +198,7 @@ const FAQ = () => {
 
                 {/* FAQ Grid Section */}
                 <section className="py-8">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <div className="grid md:grid-cols-2 gap-4 lg:gap-6 masonry-grid">
                             {faqData.map((category, index) => (
                                 <div key={index} className="h-full">
@@ -215,7 +215,7 @@ const FAQ = () => {
 
                 {/* Still have questions banner */}
                 <section className="mt-4 mb-12">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <div className="bg-linear-to-r from-(--color-primary) to-orange-600 rounded-2xl p-6 md:p-8 text-center text-white relative overflow-hidden shadow-xl">
                             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                             <div className="relative z-10">

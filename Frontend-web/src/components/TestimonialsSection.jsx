@@ -22,7 +22,7 @@ const TestimonialsSection = ({
 
     return (
         <section className="bg-white py-12 relative overflow-hidden group/section">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">

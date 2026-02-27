@@ -69,7 +69,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login', resetToken = null }
 
                     <div className="relative w-full aspect-square max-w-[280px] mb-8">
                         <img
-                            src="/images/lfc-e1699336877330.png"
+                            src={`${import.meta.env.BASE_URL}images/lfc-e1699336877330.png`}
                             alt="Learning For Career"
                             className="w-full h-full object-contain drop-shadow-xl relative z-10"
                         />

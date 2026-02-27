@@ -19,7 +19,7 @@ const WhyChooseUsSection = ({
             {/* Tech Grid Pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
 
-            <div className="relative z-10 max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                 {/* Header - Kept Consistent for Section Hierarchy */}
                 <div className="text-center mb-4">
                     <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">

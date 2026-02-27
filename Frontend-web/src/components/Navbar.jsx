@@ -19,6 +19,16 @@ const Navbar = ({ links }) => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    // Listen to custom event to open login modal from anywhere
+    useEffect(() => {
+        const handleOpenLogin = () => {
+            setAuthMode('login');
+            setIsAuthModalOpen(true);
+        };
+        window.addEventListener('openLoginModal', handleOpenLogin);
+        return () => window.removeEventListener('openLoginModal', handleOpenLogin);
+    }, []);
+
     const handleLogout = async () => {
         await logout();
         setIsProfileDropdownOpen(false);
@@ -87,13 +97,13 @@ const Navbar = ({ links }) => {
             )}
 
             <nav className="border-b border-gray-100 bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm transition-all duration-300">
-                <div className="max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
 
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2 group">
                         <div className="relative overflow-hidden p-1">
                             <img
-                                src="/images/lfc-e1699336877330.png"
+                                src={`${import.meta.env.BASE_URL}images/lfc-e1699336877330.png`}
                                 alt="Learning For Career"
                                 className="h-16 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
                             />
@@ -161,7 +171,7 @@ const Navbar = ({ links }) => {
                                                 </div>
                                                 <div className="py-1">
                                                     <a
-                                                        href="https://www.google.com"
+                                                        href={import.meta.env.VITE_REDIRECT_URL || 'http://localhost:5173'}
                                                         className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-(--color-primary) transition-colors font-medium"
                                                     >
                                                         <LayoutDashboard size={16} />
@@ -243,7 +253,7 @@ const Navbar = ({ links }) => {
                                         </div>
                                     </div>
                                     <a
-                                        href="https://www.google.com"
+                                        href={import.meta.env.VITE_REDIRECT_URL || 'http://localhost:5173'}
                                         className="w-full px-5 py-3 text-base font-bold text-gray-700 bg-gray-50 rounded-xl hover:text-(--color-primary) hover:bg-orange-50 transition-colors flex items-center justify-center gap-2"
                                     >
                                         <LayoutDashboard size={18} /> My Dashboard

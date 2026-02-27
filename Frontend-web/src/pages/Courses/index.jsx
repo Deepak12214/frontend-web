@@ -101,7 +101,7 @@ const CoursesPage = () => {
                     <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-linear-to-br from-(--color-primary)/5 to-purple-100/20 rounded-full blur-3xl pointer-events-none"></div>
                     <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-[400px] h-[400px] bg-linear-to-tr from-orange-100/20 to-blue-100/20 rounded-full blur-3xl pointer-events-none"></div>
 
-                    <div className="relative max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="relative max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         <div className="grid lg:grid-cols-2 gap-8 items-center">
                             {/* Left Content */}
                             <div className="max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
@@ -173,7 +173,7 @@ const CoursesPage = () => {
 
                 {/* 2. All Courses Section with Filter & Search */}
                 <section className="py-4 lg:py-6 bg-gray-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                         {/* Search Bar */}
                         {/* 2. Unified Filter Section */}
                         <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-6 max-w-4xl mx-auto">

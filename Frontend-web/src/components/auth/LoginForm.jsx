@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { authAPI } from '../../services/api/apiService';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useAuth } from '../../context/AuthContext';
 
 const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL || 'https://google.com';
@@ -11,8 +10,6 @@ const LoginForm = ({ onClose, onForgot }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({ text: '', type: '' });
-    const [captchaToken, setCaptchaToken] = useState(null);
-    const recaptchaRef = useRef(null);
     const { login } = useAuth();
 
     const handleChange = (e) => {
@@ -26,11 +23,6 @@ const LoginForm = ({ onClose, onForgot }) => {
         setLoading(true);
 
         try {
-            if (!captchaToken) {
-                setMessage({ text: 'Please complete the CAPTCHA verification.', type: 'error' });
-                setLoading(false);
-                return;
-            }
             const response = await authAPI.login(formData);
 
             // ✅ Use AuthContext — no more manual localStorage writes
@@ -43,9 +35,6 @@ const LoginForm = ({ onClose, onForgot }) => {
             const msg = err.response?.data?.message || 'Login failed. Please try again.';
             setMessage({ text: msg, type: 'error' });
             setLoading(false);
-            // Reset captcha on error
-            if (recaptchaRef.current) recaptchaRef.current.reset();
-            setCaptchaToken(null);
         }
     };
 
@@ -125,16 +114,6 @@ const LoginForm = ({ onClose, onForgot }) => {
                 >
                     Forgot password?
                 </button>
-            </div>
-
-            {/* reCAPTCHA */}
-            <div className="flex justify-center my-2">
-                <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                    onChange={(token) => setCaptchaToken(token)}
-                    onExpired={() => setCaptchaToken(null)}
-                />
             </div>
 
             {/* Submit */}

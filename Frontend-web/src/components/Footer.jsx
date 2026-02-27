@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <footer className="bg-gray-900 text-gray-300 py-16">
-            <div className="max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm">
 
                 {/* Brand */}
                 <div>
                     <Link to="/" className="inline-block mb-4">
                         <img
-                            src="/images/lfc-e1699336877330.png"
+                            src={`${import.meta.env.BASE_URL}images/lfc-e1699336877330.png`}
                             alt="Learning For Career"
                             className="h-12 w-auto object-contain bg-white/90 rounded-lg px-2 py-1"
                         />
@@ -80,7 +80,7 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 mt-12 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
                 &copy; 2026 Learning For Career. All rights reserved.
             </div>
         </footer>

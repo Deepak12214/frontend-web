@@ -8,6 +8,7 @@ import TestimonialsSection from '../../components/TestimonialsSection';
 import CourseCard from '../../components/CourseCard';
 import { allCourses as coursesData } from '../../data/coursesData';
 import { getInstructorByName } from '../../data/instructorsData';
+import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { ShoppingCart, CheckCircle } from 'lucide-react';
 import { navLinks } from '../../data/mock';
@@ -47,8 +48,27 @@ const CourseDetails = () => {
 
     const [expandedSections, setExpandedSections] = useState([0]);
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
     const { addToCart, isInCart } = useCart();
     const alreadyInCart = isInCart(course.id);
+
+    const handleCartAction = (actionType) => {
+        if (!isAuthenticated) {
+            window.dispatchEvent(new Event('openLoginModal'));
+            return;
+        }
+
+        if (actionType === 'buy_now') {
+            if (!alreadyInCart) addToCart(course);
+            navigate('/cart');
+        } else if (actionType === 'add_to_cart') {
+            if (!alreadyInCart) {
+                addToCart(course);
+            } else {
+                navigate('/cart');
+            }
+        }
+    };
 
     const toggleSection = (index) => {
         setExpandedSections(prev =>
@@ -203,18 +223,18 @@ const CourseDetails = () => {
 
 
 
-            <main className="flex-1 pb-20 relative isolate">
+            <main className="flex-1 pb-16 relative isolate">
                 {/* Full Width Hero Background */}
-                <div className="absolute top-0 inset-x-0 h-[650px] bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 -z-10"></div>
+                <div className="absolute top-0 inset-x-0 h-[450px] bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 -z-10"></div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
                     {/* Breadcrumb at Top Left */}
-                    <div className="pt-6">
+                    <div className="pt-4 md:pt-6">
                         <Breadcrumb items={breadcrumbItems} simple={true} />
                     </div>
 
                     {/* TWO COLUMN LAYOUT: Contained Hero + Content Left | Sticky Sidebar Right */}
-                    <div className="grid lg:grid-cols-3 gap-12 items-start pt-6">
+                    <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start pt-4 md:pt-6">
 
                         {/* LEFT COLUMN */}
                         <div className="lg:col-span-2 space-y-8">
@@ -223,26 +243,26 @@ const CourseDetails = () => {
                             <div className="relative z-10">
                                 <div className="relative">
 
-                                    <h1 className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+                                    <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-[1.15] tracking-tight">
                                         {course.title}
                                     </h1>
 
-                                    <p className="mt-4 text-lg text-gray-600 max-w-2xl leading-relaxed">
+                                    <p className="mt-3 text-base text-gray-600 max-w-2xl leading-relaxed">
                                         {course.description}
                                     </p>
 
-                                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                                    <div className="mt-5 flex flex-wrap items-center gap-3">
                                         {course.isFeatured && (
-                                            <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide border border-orange-200">
+                                            <span className="bg-orange-100 text-orange-700 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide border border-orange-200">
                                                 Bestseller
                                             </span>
                                         )}
-                                        <span className="bg-white/80 backdrop-blur text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide border border-gray-200 shadow-sm">
+                                        <span className="bg-white/80 backdrop-blur text-gray-700 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide border border-gray-200 shadow-sm">
                                             {course.category}
                                         </span>
                                     </div>
 
-                                    <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-gray-600 border-t border-gray-200/60 pt-6">
+                                    <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-600 border-t border-gray-200/60 pt-5">
                                         <div className="flex items-center gap-3">
                                             <img
                                                 src="https://randomuser.me/api/portraits/men/32.jpg"
@@ -266,32 +286,40 @@ const CourseDetails = () => {
                                     </div>
                                 </div>
 
-                                {/* Stats Box - The "Table" from the sketch */}
-                                <div className="mt-8 border border-gray-200 rounded-2xl grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-200 overflow-hidden bg-white shadow-sm">
-                                    <div className="p-5 text-center group hover:bg-gray-50 transition-colors">
-                                        <div className="text-gray-500 text-sm font-medium mb-1">Certificate</div>
-                                        <div className="font-bold text-gray-900 text-lg">Yes</div>
+                                {/* Stats Box - Completed with total and active learners */}
+                                <div className="mt-6 border border-gray-200 rounded-xl grid grid-cols-2 lg:grid-cols-6 divide-y lg:divide-y-0 lg:divide-x divide-gray-200 overflow-hidden bg-white shadow-sm">
+                                    <div className="p-3 text-center group hover:bg-gray-50 transition-colors">
+                                        <div className="text-gray-500 text-[11px] font-bold uppercase tracking-wide mb-1">Learners</div>
+                                        <div className="font-bold text-gray-900 text-sm sm:text-base">{course.students || '12.5k'}</div>
                                     </div>
-                                    <div className="p-5 text-center group hover:bg-gray-50 transition-colors">
-                                        <div className="text-gray-500 text-sm font-medium mb-1">Level</div>
-                                        <div className="font-bold text-gray-900 text-lg">{course.level}</div>
+                                    <div className="p-3 text-center group hover:bg-gray-50 transition-colors">
+                                        <div className="text-gray-500 text-[11px] font-bold uppercase tracking-wide mb-1">Active</div>
+                                        <div className="font-bold text-gray-900 text-sm sm:text-base">8.2k</div>
                                     </div>
-                                    <div className="p-5 text-center group hover:bg-gray-50 transition-colors">
-                                        <div className="text-gray-500 text-sm font-medium mb-1">Duration</div>
-                                        <div className="font-bold text-gray-900 text-lg">{course.duration}</div>
+                                    <div className="p-3 text-center group hover:bg-gray-50 transition-colors">
+                                        <div className="text-gray-500 text-[11px] font-bold uppercase tracking-wide mb-1">Certificate</div>
+                                        <div className="font-bold text-gray-900 text-sm sm:text-base">Yes</div>
                                     </div>
-                                    <div className="p-5 text-center group hover:bg-gray-50 transition-colors">
-                                        <div className="text-gray-500 text-sm font-medium mb-1">Rating</div>
-                                        <div className="font-bold text-gray-900 text-lg flex items-center justify-center gap-1">
-                                            <span>{course.rating}</span>
-                                            <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                    <div className="p-3 text-center group hover:bg-gray-50 transition-colors">
+                                        <div className="text-gray-500 text-[11px] font-bold uppercase tracking-wide mb-1">Level</div>
+                                        <div className="font-bold text-gray-900 text-sm sm:text-base">{course.level || 'All Levels'}</div>
+                                    </div>
+                                    <div className="p-3 text-center group hover:bg-gray-50 transition-colors">
+                                        <div className="text-gray-500 text-[11px] font-bold uppercase tracking-wide mb-1">Duration</div>
+                                        <div className="font-bold text-gray-900 text-sm sm:text-base">{course.duration || '41h'}</div>
+                                    </div>
+                                    <div className="p-3 text-center group hover:bg-gray-50 transition-colors">
+                                        <div className="text-gray-500 text-[11px] font-bold uppercase tracking-wide mb-1">Rating</div>
+                                        <div className="font-bold text-gray-900 text-sm sm:text-base flex items-center justify-center gap-1">
+                                            <span>{course.rating || '4.8'}</span>
+                                            <svg className="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* 2. What You'll Learn */}
-                            <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
+                            <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8 shadow-sm">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                                     <span className="w-2 h-8 bg-green-500 rounded-full"></span>
                                     What you'll learn
@@ -435,19 +463,13 @@ const CourseDetails = () => {
 
                                     <div className="space-y-2 mb-4">
                                         <button
-                                            onClick={() => navigate('/cart')}
+                                            onClick={() => handleCartAction('buy_now')}
                                             className="w-full bg-(--color-primary) text-white font-bold py-3 rounded-lg shadow-md shadow-(--color-primary)/20 hover:shadow-(--color-primary)/30 active:scale-[0.98] transition-all text-sm"
                                         >
                                             Buy Now
                                         </button>
                                         <button
-                                            onClick={() => {
-                                                if (!alreadyInCart) {
-                                                    addToCart(course);
-                                                } else {
-                                                    navigate('/cart');
-                                                }
-                                            }}
+                                            onClick={() => handleCartAction('add_to_cart')}
                                             className={`w-full font-bold py-3 rounded-lg active:scale-[0.98] transition-all text-sm flex items-center justify-center gap-2 ${alreadyInCart
                                                 ? 'bg-green-50 border border-green-200 text-green-600 hover:bg-green-100'
                                                 : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
@@ -481,7 +503,7 @@ const CourseDetails = () => {
                 </div>
 
                 {/* BOTTOM FULL WIDTH SECTION (Instructor, More Courses, Reviews) */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-12">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 mt-12 space-y-12">
 
                     {/* 7. Instructor */}
                     <div id="instructor" className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
@@ -573,7 +595,7 @@ const CourseDetails = () => {
 
                 {/* Similar Courses - Bottom Area */}
                 {similarCourses.length > 0 && (
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-12 border-t border-gray-200">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 mt-12 pt-12 border-t border-gray-200">
                         <h2 className="text-2xl font-bold text-gray-900 mb-8">More from this category</h2>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             {similarCourses.map(c => <CourseCard key={c.id} course={c} />)}

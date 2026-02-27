@@ -48,7 +48,7 @@ const HeroSlider = ({
             ))}
 
             {/* Content Layer */}
-            <div className="relative z-20 h-full w-full max-w-[95%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+            <div className="relative z-20 h-full w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center">
 
                 {slides.map((slide, index) => (
                     <div

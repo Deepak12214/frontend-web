@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { User, Mail, Lock, Eye, EyeOff, Loader2, CheckCircle2, Circle } from 'lucide-react';
 import { authAPI } from '../../services/api/apiService';
-import ReCAPTCHA from 'react-google-recaptcha';
-
 const SignUpForm = () => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -16,8 +14,6 @@ const SignUpForm = () => {
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({ text: '', type: '' }); // type: 'error' | 'success'
-    const [captchaToken, setCaptchaToken] = useState(null);
-    const recaptchaRef = useRef(null);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,12 +47,6 @@ const SignUpForm = () => {
 
         setLoading(true);
 
-        if (!captchaToken) {
-            setMessage({ text: 'Please complete the CAPTCHA verification.', type: 'error' });
-            setLoading(false);
-            return;
-        }
-
         try {
             await authAPI.register({
                 firstName: formData.firstName,
@@ -76,9 +66,6 @@ const SignUpForm = () => {
         } catch (err) {
             const msg = err.response?.data?.message || 'Registration failed. Please try again.';
             setMessage({ text: msg, type: 'error' });
-            // Reset captcha on error
-            if (recaptchaRef.current) recaptchaRef.current.reset();
-            setCaptchaToken(null);
         } finally {
             setLoading(false);
         }
@@ -267,16 +254,6 @@ const SignUpForm = () => {
                         {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                 </div>
-            </div>
-
-            {/* reCAPTCHA */}
-            <div className="flex justify-center my-2">
-                <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                    onChange={(token) => setCaptchaToken(token)}
-                    onExpired={() => setCaptchaToken(null)}
-                />
             </div>
 
             {/* Submit */}

@@ -74,13 +74,13 @@ const About = () => {
             <main className="pb-0">
                 {/* Breadcrumb */}
                 <div className="bg-gray-50 border-b border-gray-100">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-4">
                         <Breadcrumb items={breadcrumbItems} simple={true} />
                     </div>
                 </div>
 
                 {/* 1. HERO SECTION (Custom for Page) */}
-                <section className="py-6 lg:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+                <section className="py-6 lg:py-8 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative overflow-hidden">
                     {/* Abstract Decoration */}
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-3xl -mr-20 -mt-20 -z-10"></div>
 
@@ -114,7 +114,7 @@ const About = () => {
                         <div className="relative group perspective-1000 w-[80%]">
                             <div className="absolute inset-0 bg-linear-to-tr from-(--color-primary)/20 to-purple-500/20 rounded-4xl transform rotate-6 scale-95 group-hover:rotate-3 transition-transform duration-500"></div>
                             <img
-                                src="/assets/images/about-hero.png"
+                                src={`${import.meta.env.BASE_URL}assets/images/about-hero.png`}
                                 alt="Team working together"
                                 className="relative rounded-4xl shadow-2xl w-full h-auto object-cover aspect-4/3 transform -rotate-2 group-hover:rotate-0 transition-transform duration-500 border-4 border-white"
                             />
@@ -151,7 +151,7 @@ const About = () => {
                 {/* 6. HISTORY / STORY SECTION (Custom Layout) */}
                 <section className="py-8 bg-white relative overflow-hidden">
                     <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-20 pointer-events-none"></div>
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center relative z-10">
                         <span className="inline-block py-1 px-3 rounded-full bg-gray-100 text-gray-600 text-[10px] font-bold tracking-widest uppercase mb-4">Our Journey</span>
                         <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-8 leading-tight">How It All Started?</h2>
                         <div className="space-y-6 text-base md:text-lg text-gray-600 leading-relaxed">

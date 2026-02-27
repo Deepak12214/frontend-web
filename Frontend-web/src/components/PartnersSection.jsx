@@ -6,7 +6,7 @@ const PartnersSection = ({
 }) => {
     return (
         <section className="py-12 bg-white border-b border-gray-100 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 text-center relative z-10">
                 <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-8 flex items-center justify-center gap-4">
                     <span className="w-10 h-1 bg-(--color-primary) rounded-full"></span>
                     {title}
