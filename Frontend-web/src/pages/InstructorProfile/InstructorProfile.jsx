@@ -116,11 +116,10 @@ const InstructorProfile = () => {
             <Header categories={categories} navLinks={navLinks} />
 
             {/* Main Container */}
-            <div className="">
+            <div className="w-full">
 
-                {/* Top Section - Re-designed Background Image Banner */}
-                <div className="relative w-full  overflow-hidden shadow-2xl shadow-gray-200/50 mb-10 font-sans">
-
+                {/* Top Section - Re-designed Background Image Banner (Full Width) */}
+                <div className="relative w-full overflow-hidden shadow-base mb-10 font-sans">
                     {/* Background Image Setup (Static Image) */}
                     <div className="absolute inset-0 z-0 bg-gray-900">
                         <img
@@ -133,8 +132,8 @@ const InstructorProfile = () => {
                         <div className="absolute inset-0 backdrop-blur-xs"></div>
                     </div>
 
-                    {/* Content z-10 */}
-                    <div className="relative z-10 p-5 sm:p-6 lg:p-8">
+                    {/* Content z-10 (Centered and constrained) */}
+                    <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-30 py-8 lg:py-12">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
 
                             {/* LEFT SIDE: Image, Name, Title (Span 4) */}
@@ -287,8 +286,8 @@ const InstructorProfile = () => {
                     </div>
                 </div>
 
-                {/* Courses Section */}
-                <div className="mb-8">
+                {/* Courses Section Container (Centered) */}
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-30 mb-8">
                     <div className="flex items-center justify-between mb-6">
                         <div>
                             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
